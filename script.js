@@ -1,3 +1,4 @@
+var document = window.document.querySelector("document");
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
@@ -15,11 +16,11 @@ function createListElement() {
     var div = document.createElement("div");
     div.classList.add("itemRow");
     var li = document.createElement("li");
-    var button = document.createElement("button");
-    button.classList.add("remove");
-    button.appendChild(document.createTextNode("Remove"));
+    var delButton = document.createElement("button");
+    delButton.classList.add("remove");
+    delButton.appendChild(document.createTextNode("Remove"));
     li.appendChild(document.createTextNode(input.value));
-    div.append(li, button);
+    div.append(li, delButton);
     ul.appendChild(div);
     input.value = "";
 }
@@ -47,8 +48,9 @@ function deleteItem(item) {
 
 //Toggle strikethrough (done class) when item is clicked
 function taskComplete(item) {
-    if (item.target.tagName === "LI")
+    if (item.target.tagName === "LI") {
         item.target.classList.toggle("done");
+    }
 }
 
 button.addEventListener("click", addListAfterClick);
